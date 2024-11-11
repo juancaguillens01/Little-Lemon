@@ -2,3 +2,15 @@
     --yellow: #F4CE14;
     --green: #495E57;
 }
+
+.color-yellow {
+    color: var(--yellow) !important;
+}
+
+.color-green {
+    color: var(--green) !important;
+}
+
+.background-green {
+    background-color: var(--green);
+}
