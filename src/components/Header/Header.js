@@ -3,7 +3,7 @@ import Nav from '../Nav/Nav';
 function Header() {
     return (
         <header>
-            <div className="container py-3">
+            <div className="container-fluid py-3">
                 <div className="row align-items-center">
                     <div className="col-12 col-md-4 d-flex justify-content-center justify-content-md-start">
                         <img

@@ -7,6 +7,10 @@
     color: var(--yellow) !important;
 }
 
+.background-yellow {
+    background-color: var(--yellow) !important;
+}
+
 .color-green {
     color: var(--green) !important;
 }
