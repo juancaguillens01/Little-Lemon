@@ -2,8 +2,8 @@ import './Dish.css';
 
 function Dish({ image, name, description, price }) {
     return (
-        <div className="col-12 col-md-4 mb-4 dish-hover">
-            <div className="card h-100">
+        <div className="col-12 col-md-4 mb-4">
+            <div className="card h-100 dish-hover">
                 <img
                     src={image}
                     alt={name}

@@ -1,4 +1,4 @@
-.dish-hover .card:hover {
+.dish-hover:hover {
     border: 2px solid var(--yellow);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
