@@ -1,4 +1,5 @@
 import Dish from '../Dish/Dish';
+import ActionButton from '../ActionButton/ActionButton';
 
 function Main() {
     return (
@@ -18,7 +19,9 @@ function Main() {
                             memorable, combining warm, attentive service and a welcoming atmosphere
                             with a culinary journey that pays homage to our heritage.
                         </p>
-                        <button className="background-yellow btn fw-bold">Reserve a Table</button>
+                        <ActionButton>
+                            Reserve a Table
+                        </ActionButton>
                     </div>
                     <div className="col-12 col-md-4 d-flex align-items-center  py-3">
                         <img
@@ -36,7 +39,9 @@ function Main() {
                         <h2 className="">This week’s specials!</h2>
                     </div>
                     <div className="col-12 col-md-6">
-                        <button className="background-yellow btn fw-bold">Online Menu</button>
+                        <ActionButton>
+                            Online Menu
+                        </ActionButton>
                     </div>
                 </div>
                 <div className="row flex-wrap">
