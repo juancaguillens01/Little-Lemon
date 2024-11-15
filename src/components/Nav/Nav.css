@@ -1,3 +1,7 @@
 .link-hover:hover {
     color: var(--yellow) !important;
 }
+
+.active {
+    color: var(--yellow) !important;
+}
