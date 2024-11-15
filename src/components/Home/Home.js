@@ -18,7 +18,7 @@ function Home() {
                         memorable, combining warm, attentive service and a welcoming atmosphere
                         with a culinary journey that pays homage to our heritage.
                     </p>
-                    <ActionButton>
+                    <ActionButton link="/reservations">
                         Reserve a Table
                     </ActionButton>
                 </div>
@@ -37,7 +37,7 @@ function Home() {
                         <h2>This week’s specials!</h2>
                     </div>
                     <div className="col-12 col-md-6">
-                        <ActionButton>
+                        <ActionButton link="/menu">
                             Online Menu
                         </ActionButton>
                     </div>

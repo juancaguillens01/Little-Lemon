@@ -1,10 +1,13 @@
+import { Link } from 'react-router-dom';
 import './ActionButton.css';
 
-function ActionButton({ children }) {
+function ActionButton({ children, link }) {
     return (
-        <button className="background-yellow btn fw-bold button-hover">
-            {children}
-        </button>
+        <Link to={link} className="text-decoration-none">
+            <button className="background-yellow btn fw-bold button-hover">
+                {children}
+            </button>
+        </Link>
     );
 }
 
