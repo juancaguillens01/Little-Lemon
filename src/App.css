@@ -19,3 +19,11 @@
 .background-green {
     background-color: var(--green);
 }
+
+.color-orange {
+    color: var(--orange);
+}
+
+.background-orange {
+    background-color: var(--orange);
+}

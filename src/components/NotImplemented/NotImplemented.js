@@ -1,6 +1,6 @@
 function NotImplemented() {
     return (
-        <div className="d-flex flex-column align-items-center min-vh-100 background-green">
+        <div className="d-flex flex-column align-items-center background-green px-3">
             <h1 className="mt-3 color-yellow">Not implemented yet</h1>
             <img
                 src="images/notImplemented.jpg"

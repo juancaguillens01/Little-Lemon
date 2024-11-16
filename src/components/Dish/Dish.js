@@ -13,7 +13,7 @@ function Dish({ image, name, description, price }) {
                 <div className="card-body">
                     <div className="d-flex justify-content-between align-items-center">
                         <h5 className="card-title mb-0">{name}</h5>
-                        <span className="fw-bold text-primary">{price}</span>
+                        <span className="fw-bold color-orange">{price}</span>
                     </div>
                     <p className="card-text mt-2">{description}</p>
                 </div>
