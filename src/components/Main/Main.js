@@ -1,14 +1,14 @@
 import { Route, Routes } from 'react-router-dom';
 import Home from '../Home/Home';
-import Reservation from '../Reservation/Reservation';
 import NotImplemented from '../NotImplemented/NotImplemented';
+import BookingPage from '../BookingPage/BookingPage';
 
 function Main() {
     return (
         <main className="w-100">
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/reservations" element={<Reservation />} />
+                <Route path="/reservations" element={<BookingPage />} />
                 <Route path="/about" element={<NotImplemented />} />
                 <Route path="/menu" element={<NotImplemented />} />
                 <Route path="/orderOnline" element={<NotImplemented />} />
