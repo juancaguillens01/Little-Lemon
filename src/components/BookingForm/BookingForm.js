@@ -8,6 +8,8 @@ function BookingForm() {
         occasion: 'Birthday'
     });
 
+    const [errors, setErrors] = useState({});
+
     const availableTimes = ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00'];
 
     const handleChange = (e) => {
@@ -16,11 +18,22 @@ function BookingForm() {
             ...prevState,
             [id]: value
         }));
+        setErrors((prevErrors) => ({
+            ...prevErrors,
+            [id]: ''
+        }))
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('Form submitted:', formData);
+        if (!formData.date) {
+            setErrors((prevErrors) => ({
+                ...prevErrors,
+                date: 'Date is required'
+            }));
+            return;
+        }
+        console.log("Form submitted successfully");
     };
 
     return (
@@ -33,8 +46,9 @@ function BookingForm() {
                 id="date"
                 value={formData.date}
                 onChange={handleChange}
-                className="form-control mb-4"
+                className={`form-control mb-2 ${errors.date ? 'is-invalid' : ''}`}
             />
+            {errors.date && <div className="text-danger mb-3">{errors.date}</div>}
 
             <label htmlFor="time">Choose time</label>
             <select
