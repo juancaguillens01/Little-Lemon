@@ -1,27 +1,30 @@
 import React, { useState } from 'react';
 
-function BookingForm() {
+function BookingForm({ availableTimes, dispatch }) {
     const [formData, setFormData] = useState({
         date: '',
         time: '',
         guests: 1,
-        occasion: 'Birthday'
+        occasion: 'Birthday',
     });
 
     const [errors, setErrors] = useState({});
 
-    const availableTimes = ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00'];
-
     const handleChange = (e) => {
         const { id, value } = e.target;
+
+        if (id === 'date') {
+            dispatch({ type: 'UPDATE_TIMES', payload: { date: value } });
+        }
+
         setFormData((prevState) => ({
             ...prevState,
-            [id]: value
+            [id]: value,
         }));
         setErrors((prevErrors) => ({
             ...prevErrors,
-            [id]: ''
-        }))
+            [id]: '',
+        }));
     };
 
     const handleSubmit = (e) => {
@@ -29,17 +32,15 @@ function BookingForm() {
         if (!formData.date) {
             setErrors((prevErrors) => ({
                 ...prevErrors,
-                date: 'Date is required'
+                date: 'Date is required',
             }));
             return;
         }
-        console.log("Form submitted successfully");
+        console.log('Form submitted successfully', formData);
     };
 
     return (
-        <form
-            onSubmit={handleSubmit}
-        >
+        <form onSubmit={handleSubmit}>
             <label htmlFor="date">Choose date</label>
             <input
                 type="date"
@@ -83,7 +84,7 @@ function BookingForm() {
                 className="form-select mb-5"
             >
                 <option value="Birthday">Birthday</option>
-                <option value="Aniversary">Aniversary</option>
+                <option value="Anniversary">Anniversary</option>
             </select>
 
             <button type="submit" className="btn btn-primary w-100 mb-3">
