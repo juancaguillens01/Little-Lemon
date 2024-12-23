@@ -14,7 +14,8 @@ function BookingForm({ availableTimes, dispatch }) {
         const { id, value } = e.target;
 
         if (id === 'date') {
-            dispatch({ type: 'UPDATE_TIMES', payload: { date: value } });
+            const selectedDate = new Date(value);
+            dispatch({ type: 'UPDATE_TIMES', payload: selectedDate });
         }
 
         setFormData((prevState) => ({

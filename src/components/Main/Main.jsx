@@ -3,17 +3,21 @@ import { useReducer } from 'react';
 import Home from '../Home/Home';
 import NotImplemented from '../NotImplemented/NotImplemented';
 import BookingPage from '../BookingPage/BookingPage';
+import { fetchAPI } from '../../utils/api.ts';
 
 export const timesReducer = (state, action) => {
     switch (action.type) {
         case 'UPDATE_TIMES':
-            return ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00'];
+            return fetchAPI(action.payload);
         default:
             return state;
     }
 };
 
-export const initializeTimes = () => ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00'];
+export const initializeTimes = () => {
+    const today = new Date();
+    return fetchAPI(today);
+};
 
 
 function Main() {
