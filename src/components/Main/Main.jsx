@@ -1,9 +1,10 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import { useReducer } from 'react';
 import Home from '../Home/Home';
 import NotImplemented from '../NotImplemented/NotImplemented';
 import BookingPage from '../BookingPage/BookingPage';
-import { fetchAPI } from '../../utils/api.ts';
+import ConfirmedBooking from '../ConfirmedBooking/ConfirmedBooking';
+import { fetchAPI, submitAPI } from '../../utils/api.ts';
 
 export const timesReducer = (state, action) => {
     switch (action.type) {
@@ -21,7 +22,14 @@ export const initializeTimes = () => {
 
 
 function Main() {
+    const navigate = useNavigate();
     const [availableTimes, dispatch] = useReducer(timesReducer, initializeTimes());
+
+    const submitForm = (formData) => {
+        if (submitAPI(formData)) {
+            navigate('/confirmed');
+        }
+    };
 
     return (
         <main className="w-100">
@@ -33,9 +41,11 @@ function Main() {
                         <BookingPage
                             availableTimes={availableTimes}
                             dispatch={dispatch}
+                            submitForm={submitForm}
                         />
                     }
                 />
+                <Route path="/confirmed" element={<ConfirmedBooking />} />
                 <Route path="/about" element={<NotImplemented />} />
                 <Route path="/menu" element={<NotImplemented />} />
                 <Route path="/orderOnline" element={<NotImplemented />} />

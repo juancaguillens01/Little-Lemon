@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function BookingForm({ availableTimes, dispatch }) {
+function BookingForm({ availableTimes, dispatch, submitForm }) {
     const currentDate = new Date().toISOString().split('T')[0];
 
     const [formData, setFormData] = useState({
@@ -41,7 +41,7 @@ function BookingForm({ availableTimes, dispatch }) {
             }));
             return;
         }
-        console.log('Form submitted successfully', formData);
+        submitForm(formData);
     };
 
     return (
