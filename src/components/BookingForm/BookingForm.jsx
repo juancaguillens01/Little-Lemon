@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 
 function BookingForm({ availableTimes, dispatch }) {
+    const currentDate = new Date().toISOString().split('T')[0];
+
     const [formData, setFormData] = useState({
-        date: '',
+        date: currentDate,
         time: '',
         guests: 1,
         occasion: 'Birthday',
@@ -15,7 +17,9 @@ function BookingForm({ availableTimes, dispatch }) {
 
         if (id === 'date') {
             const selectedDate = new Date(value);
-            dispatch({ type: 'UPDATE_TIMES', payload: selectedDate });
+            if (new Date(value) >= new Date(currentDate)) {
+                dispatch({ type: 'UPDATE_TIMES', payload: selectedDate });
+            }
         }
 
         setFormData((prevState) => ({
@@ -30,10 +34,10 @@ function BookingForm({ availableTimes, dispatch }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (!formData.date) {
+        if (new Date(formData.date) < new Date(currentDate)) {
             setErrors((prevErrors) => ({
                 ...prevErrors,
-                date: 'Date is required',
+                date: 'Selected date cannot be in the past',
             }));
             return;
         }
