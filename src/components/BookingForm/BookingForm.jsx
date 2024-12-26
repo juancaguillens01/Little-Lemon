@@ -19,7 +19,7 @@ function BookingForm({ availableTimes, selectedDate, setSelectedDate, dispatch, 
             const selectedDateValue = new Date(value);
             if (selectedDateValue >= new Date(currentDate)) {
                 setSelectedDate(selectedDateValue);
-                dispatch({ type: 'UPDATE_TIMES', payload: availableTimes }); // Refetch times
+                dispatch({ type: 'UPDATE_TIMES', payload: availableTimes });
             } else {
                 setErrors((prevErrors) => ({
                     ...prevErrors,
