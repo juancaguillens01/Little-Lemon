@@ -20,13 +20,25 @@ function BookingForm({ availableTimes, selectedDate, setSelectedDate, dispatch, 
             if (selectedDateValue >= new Date(currentDate)) {
                 setSelectedDate(selectedDateValue);
                 dispatch({ type: 'UPDATE_TIMES', payload: availableTimes });
+                setFormData((prevState) => ({
+                    ...prevState,
+                    date: value,
+                }));
+                setErrors((prevErrors) => ({
+                    ...prevErrors,
+                    date: '',
+                }));
             } else {
                 setErrors((prevErrors) => ({
                     ...prevErrors,
                     date: 'Selected date cannot be in the past',
                 }));
-                return;
+                setFormData((prevState) => ({
+                    ...prevState,
+                    date: value,
+                }));
             }
+            return;
         }
 
         setFormData((prevState) => ({
@@ -38,6 +50,7 @@ function BookingForm({ availableTimes, selectedDate, setSelectedDate, dispatch, 
             [id]: '',
         }));
     };
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
