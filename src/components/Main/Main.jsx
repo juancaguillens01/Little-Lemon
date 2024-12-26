@@ -1,5 +1,5 @@
 import { Route, Routes, useNavigate } from 'react-router-dom';
-import { useReducer } from 'react';
+import { useReducer, useState, useEffect } from 'react';
 import Home from '../Home/Home';
 import NotImplemented from '../NotImplemented/NotImplemented';
 import BookingPage from '../BookingPage/BookingPage';
@@ -9,7 +9,7 @@ import { fetchAPI, submitAPI } from '../../utils/api.ts';
 export const timesReducer = (state, action) => {
     switch (action.type) {
         case 'UPDATE_TIMES':
-            return fetchAPI(action.payload);
+            return action.payload;
         default:
             return state;
     }
@@ -20,10 +20,23 @@ export const initializeTimes = () => {
     return fetchAPI(today);
 };
 
-
 function Main() {
     const navigate = useNavigate();
-    const [availableTimes, dispatch] = useReducer(timesReducer, initializeTimes());
+    const [availableTimes, dispatch] = useReducer(timesReducer, []);
+    const [selectedDate, setSelectedDate] = useState(new Date());
+
+    useEffect(() => {
+        const fetchTimes = async () => {
+            try {
+                const times = await fetchAPI(selectedDate);
+                dispatch({ type: 'UPDATE_TIMES', payload: times });
+            } catch (error) {
+                console.error('Error fetching times:', error);
+            }
+        };
+
+        fetchTimes();
+    }, [selectedDate]);
 
     const submitForm = (formData) => {
         if (submitAPI(formData)) {
@@ -42,6 +55,8 @@ function Main() {
                             availableTimes={availableTimes}
                             dispatch={dispatch}
                             submitForm={submitForm}
+                            selectedDate={selectedDate}
+                            setSelectedDate={setSelectedDate}
                         />
                     }
                 />
